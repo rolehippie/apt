@@ -1,0 +1,3 @@
+apt_enable_universe: True
+apt_enable_multiverse: True
+apt_enable_backports: True

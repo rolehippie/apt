@@ -1,0 +1,31 @@
+deb http://archive.ubuntu.com/ubuntu {{ ansible_distribution_release }} main restricted
+deb-src http://archive.ubuntu.com/ubuntu {{ ansible_distribution_release }} main restricted
+
+deb http://archive.ubuntu.com/ubuntu {{ ansible_distribution_release }}-updates main restricted
+deb-src http://archive.ubuntu.com/ubuntu {{ ansible_distribution_release }}-updates main restricted
+
+deb http://security.ubuntu.com/ubuntu {{ ansible_distribution_release }}-security main restricted
+deb-src http://security.ubuntu.com/ubuntu {{ ansible_distribution_release }}-security main restricted
+deb http://security.ubuntu.com/ubuntu {{ ansible_distribution_release }}-security universe
+deb-src http://security.ubuntu.com/ubuntu {{ ansible_distribution_release }}-security universe
+deb http://security.ubuntu.com/ubuntu {{ ansible_distribution_release }}-security multiverse
+deb-src http://security.ubuntu.com/ubuntu {{ ansible_distribution_release }}-security multiverse
+
+{% if apt_enable_universe | default(True) %}
+deb http://archive.ubuntu.com/ubuntu {{ ansible_distribution_release }} universe
+deb-src http://archive.ubuntu.com/ubuntu {{ ansible_distribution_release }} universe
+deb http://archive.ubuntu.com/ubuntu {{ ansible_distribution_release }}-updates universe
+deb-src http://archive.ubuntu.com/ubuntu {{ ansible_distribution_release }}-updates universe
+{% endif %}
+
+{% if apt_enable_multiverse | default(True) %}
+deb http://archive.ubuntu.com/ubuntu {{ ansible_distribution_release }} multiverse
+deb-src http://archive.ubuntu.com/ubuntu {{ ansible_distribution_release }} multiverse
+deb http://archive.ubuntu.com/ubuntu {{ ansible_distribution_release }}-updates multiverse
+deb-src http://archive.ubuntu.com/ubuntu {{ ansible_distribution_release }}-updates multiverse
+{% endif %}
+
+{% if apt_enable_backports | default(True) %}
+deb http://archive.ubuntu.com/ubuntu {{ ansible_distribution_release }}-backports main restricted universe multiverse
+deb-src http://archive.ubuntu.com/ubuntu {{ ansible_distribution_release }}-backports main restricted universe multiverse
+{% endif %}

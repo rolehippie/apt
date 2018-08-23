@@ -2,22 +2,26 @@
   template:
     src: sources.j2
     dest: /etc/apt/sources.list
+  register: apt_sources
   tags:
     - apt
 
 - name: apt update
+  when: apt_force_update or apt_sources.changed
   apt:
     update_cache: yes
   tags:
     - apt
 
 - name: auto clean
+  when: apt_auto_clean
   apt:
     autoclean: yes
   tags:
     - apt
 
 - name: auto remove
+  when: apt_auto_remove
   apt:
     autoremove: yes
   tags:

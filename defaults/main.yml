@@ -1,3 +1,6 @@
 apt_enable_universe: True
 apt_enable_multiverse: True
 apt_enable_backports: True
+apt_force_update: False
+apt_auto_clean: True
+apt_auto_remove: True

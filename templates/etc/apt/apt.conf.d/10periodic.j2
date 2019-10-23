@@ -1,0 +1,6 @@
+//jinja2: lstrip_blocks: True
+// {{ ansible_managed }}
+
+{% for conf in apt_periodic_config %}
+APT::Periodic::{{ conf.name }} "{{ conf.value }}";
+{% endfor %}

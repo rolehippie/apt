@@ -43,7 +43,7 @@ steps:
   - molecule test -s default
   environment:
     HCLOUD_TOKEN:
-      from_secret: molecule_hcloud_token
+      from_secret: hcloud_token
     USER: root
     PY_COLORS: 1
 
@@ -80,16 +80,16 @@ steps:
     actions:
     - commit
     - push
-    author_email: "gitea@owncloud.com"
-    author_name: Gitea
+    author_email: "drone@webhippie.de"
+    author_name: Drone
     branch: master
     message: "[SKIP CI] update readme"
-    remote: "https://gitea.owncloud.services/ansible/apt"
-    netrc_machine: gitea.owncloud.services
+    remote: "https://github.com/rolehippie/apt"
+    netrc_machine: github.com
     netrc_username:
-      from_secret: gitea_username
+      from_secret: github_username
     netrc_password:
-      from_secret: gitea_token
+      from_secret: github_token
   when:
     ref:
     - refs/heads/master
@@ -113,12 +113,15 @@ platform:
 
 steps:
 - name: notify
-  image: plugins/slack:1
-  pull: always
+  image: plugins/matrix
   settings:
-    webhook:
-      from_secret: slack_webhook
-    channel: infrastructure
+    homeserver: https://matrix.org
+    password:
+      from_secret: matrix_password
+    roomid:
+      from_secret: matrix_roomid
+    username:
+      from_secret: matrix_username
 
 trigger:
   ref:

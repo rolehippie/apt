@@ -1,0 +1,136 @@
+---
+kind: pipeline
+name: linting
+
+platform:
+  os: linux
+  arch: amd64
+
+steps:
+- name: later
+  image: xoxys/ansible-later:latest
+  pull: always
+  commands:
+    - ansible-later
+
+trigger:
+  ref:
+  - refs/heads/master
+  - refs/tags/**
+  - refs/pull/**
+
+---
+kind: pipeline
+name: deployment
+
+platform:
+  os: linux
+  arch: amd64
+
+concurrency:
+  limit: 1
+
+workspace:
+  base: /drone/src
+  path: apt
+
+steps:
+- name: molecule
+  image: xoxys/molecule:hcloud-linux-amd64
+  pull: always
+  commands:
+  - /bin/bash /docker-entrypoint.sh
+  - molecule test -s default
+  environment:
+    HCLOUD_TOKEN:
+      from_secret: molecule_hcloud_token
+    USER: root
+    PY_COLORS: 1
+
+trigger:
+  ref:
+  - refs/heads/master
+  - refs/tags/**
+
+depends_on:
+  - linting
+
+---
+kind: pipeline
+name: documentation
+
+platform:
+  os: linux
+  arch: amd64
+
+steps:
+- name: generate
+  image: xoxys/ansible-doctor:latest
+  pull: always
+  environment:
+    ANSIBLE_DOCTOR_LOG_LEVEL: INFO
+    ANSIBLE_DOCTOR_FORCE_OVERWRITE: true
+    ANSIBLE_DOCTOR_EXCLUDE_FILES: molecule/
+    ANSIBLE_DOCTOR_CUSTOM_HEADER: HEADER.md
+
+- name: commit
+  pull: always
+  image: plugins/git-action:latest
+  settings:
+    actions:
+    - commit
+    - push
+    author_email: "gitea@owncloud.com"
+    author_name: Gitea
+    branch: master
+    message: "[SKIP CI] update readme"
+    remote: "https://gitea.owncloud.services/ansible/apt"
+    netrc_machine: gitea.owncloud.services
+    netrc_username:
+      from_secret: gitea_username
+    netrc_password:
+      from_secret: gitea_token
+  when:
+    ref:
+    - refs/heads/master
+
+trigger:
+  ref:
+  - refs/heads/master
+  - refs/tags/**
+  - refs/pull/**
+
+depends_on:
+  - deployment
+
+---
+kind: pipeline
+name: notifications
+
+platform:
+  os: linux
+  arch: amd64
+
+steps:
+- name: notify
+  image: plugins/slack:1
+  pull: always
+  settings:
+    webhook:
+      from_secret: slack_webhook
+    channel: infrastructure
+
+trigger:
+  ref:
+  - refs/heads/master
+  - refs/tags/**
+  status:
+  - success
+  - failure
+
+depends_on:
+  - linting
+  - deployment
+  - documentation
+
+...

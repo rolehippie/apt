@@ -1,0 +1,47 @@
+//jinja2: lstrip_blocks: True
+// {{ ansible_managed }}
+Unattended-Upgrade::Allowed-Origins {
+{% for item in apt_unattended_upgrade_allowed_origins %}
+    "{{ item }}";
+{% endfor %}
+};
+
+Unattended-Upgrade::Package-Blacklist {
+{% for pkg in apt_unattended_upgrade_package_blacklist %}
+    "{{ pkg }}";
+{% endfor %}
+};
+
+Unattended-Upgrade::DevRelease "{{ apt_unattended_upgrade_dev_release | lower }}";
+
+// This option allows you to control if on a unclean dpkg exit
+// unattended-upgrades will automatically run
+//   dpkg --force-confold --configure -a
+// The default is true, to ensure updates keep getting installed
+//Unattended-Upgrade::AutoFixInterruptedDpkg "false";
+
+// Split the upgrade into the smallest possible chunks so that
+// they can be interrupted with SIGTERM. This makes the upgrade
+// a bit slower but it has the benefit that shutdown while a upgrade
+// is running is possible (with a small delay)
+//Unattended-Upgrade::MinimalSteps "false";
+
+// Install all unattended-upgrades when the machine is shutting down
+// instead of doing it in the background while the machine is running
+// This will (obviously) make shutdown slower
+//Unattended-Upgrade::InstallOnShutdown "true";
+
+Unattended-Upgrade::Mail "{{ apt_unattended_upgrade_mail_to }}";
+Unattended-Upgrade::MailOnlyOnError "{{ apt_unattended_upgrade_mail_on_error_only | lower }}";
+
+Unattended-Upgrade::Remove-Unused-Kernel-Packages "{{ apt_unattended_upgrade_remove_unused_kernel | lower }}";
+Unattended-Upgrade::Remove-Unused-Dependencies "{{ apt_unattended_upgrade_remove_unused_deps | lower }}";
+
+Unattended-Upgrade::Automatic-Reboot "false";
+
+{% if apt_unattended_upgrade_download_limit is defined and apt_unattended_upgrade_download_limit %}
+Acquire::http::Dl-Limit "{{ apt_unattended_upgrade_download_limit }}";
+{% endif %}
+
+Unattended-Upgrade::SyslogEnable "{{ apt_unattended_upgrade_syslog_enabled | lower }}";
+Unattended-Upgrade::SyslogFacility "{{ apt_unattended_upgrade_syslog_facility }}";

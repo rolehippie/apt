@@ -1,6 +1,80 @@
+---
 apt_enable_universe: True
 apt_enable_multiverse: True
 apt_enable_backports: True
 apt_force_update: False
-apt_auto_clean: True
-apt_auto_remove: True
+
+# @var apt_periodic_config:description: >
+# Set apt options for daily tasks. If you are looiking for all
+# possible configuration options, have a look at `/usr/lib/apt/apt.systemd.daily`.
+# @end
+apt_periodic_config:
+  - name: Update-Package-Lists
+    value: 1
+  - name: Download-Upgradeable-Packages
+    value: 0
+  - name: AutocleanInterval
+    value: 1
+  - name: Unattended-Upgrade
+    value: 0
+
+# @var apt_unattended_upgrade_allowed_origins:description: >
+# Automatically upgrade packages from these (origin:archive) pairs.
+# @end
+apt_unattended_upgrade_allowed_origins:
+  - "${distro_id}:${distro_codename}"
+  - "${distro_id}:${distro_codename}-security"
+  - "${distro_id}ESM:${distro_codename}"
+
+# @var apt_unattended_upgrade_package_blacklist:description: >
+# List of packages to not update (regexp are supported).
+# @end
+# @var apt_unattended_upgrade_package_blacklist:example: $ ["vim", "nginx"]
+apt_unattended_upgrade_package_blacklist: []
+
+# @var apt_unattended_upgrade_dev_release:description: >
+# This option will controls whether the development release of Ubuntu will be
+# upgraded automatically.
+# @end
+apt_unattended_upgrade_dev_release: False
+
+# @var apt_unattended_upgrade_mail_to:description: >
+# Send email to this address for problems or packages upgrades
+# If empty or unset then no email is sent, make sure that you
+# have a working mail setup on your system. A package that provides
+# `mailx` must be installed.
+# @end
+# @var apt_unattended_upgrade_mail_to:example: $ "user@example.com"
+apt_unattended_upgrade_mail_to: root
+
+# @var apt_unattended_upgrade_mail_on_error_only:description: >
+# Set this value to "true" to get emails only on errors.
+# @end
+apt_unattended_upgrade_mail_on_error_only: False
+
+# @var apt_unattended_upgrade_remove_unused_kernel:description: >
+# Remove unused automatically installed kernel-related packages
+# (kernel images, kernel headers and kernel version locked tools).
+# @end
+apt_unattended_upgrade_remove_unused_kernel: False
+
+# @var apt_unattended_upgrade_remove_unused_deps:description: >
+# Do automatic removal of new unused dependencies after the upgrade
+# (equivalent to apt-get autoremove).
+# @end
+apt_unattended_upgrade_remove_unused_deps: True
+
+# @var apt_unattended_upgrade_download_limit: description: >
+# Use apt bandwidth limit feature. The example limits the download
+# speed to 70kb/sec.
+# @end
+# @var apt_unattended_upgrade_download_limit:example: $ "70"
+# @var apt_unattended_upgrade_download_limit: $ "_unset_"
+
+# @apt_unattended_upgrade_syslog_enabled:description: Enable logging to syslog.
+apt_unattended_upgrade_syslog_enabled: True
+
+# @var apt_unattended_upgrade_syslog_facility:description: Specify syslog facility.
+apt_unattended_upgrade_syslog_facility: daemon
+
+...

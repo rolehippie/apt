@@ -1,4 +1,3 @@
 # apt
 
-[![Build Status](https://drone.owncloud.services/api/badges/ansible/apt/status.svg)](https://drone.owncloud.services/ansible/apt)
-
+[![Build Status](https://cloud.drone.io/api/badges/rolehippie/apt/status.svg)](https://cloud.drone.io/rolehippie/apt)

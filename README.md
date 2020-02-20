@@ -7,21 +7,21 @@ Ansible role to configure apt
 ## Table of content
 
 * [Default Variables](#default-variables)
-  * [apt_enable_universe](#apt_enable_universe)
-  * [apt_enable_multiverse](#apt_enable_multiverse)
   * [apt_enable_backports](#apt_enable_backports)
+  * [apt_enable_multiverse](#apt_enable_multiverse)
+  * [apt_enable_universe](#apt_enable_universe)
   * [apt_force_update](#apt_force_update)
   * [apt_periodic_config](#apt_periodic_config)
   * [apt_unattended_upgrade_allowed_origins](#apt_unattended_upgrade_allowed_origins)
-  * [apt_unattended_upgrade_package_blacklist](#apt_unattended_upgrade_package_blacklist)
   * [apt_unattended_upgrade_dev_release](#apt_unattended_upgrade_dev_release)
-  * [apt_unattended_upgrade_mail_to](#apt_unattended_upgrade_mail_to)
+  * [apt_unattended_upgrade_download_limit](#apt_unattended_upgrade_download_limit)
   * [apt_unattended_upgrade_mail_on_error_only](#apt_unattended_upgrade_mail_on_error_only)
-  * [apt_unattended_upgrade_remove_unused_kernel](#apt_unattended_upgrade_remove_unused_kernel)
+  * [apt_unattended_upgrade_mail_to](#apt_unattended_upgrade_mail_to)
+  * [apt_unattended_upgrade_package_blacklist](#apt_unattended_upgrade_package_blacklist)
   * [apt_unattended_upgrade_remove_unused_deps](#apt_unattended_upgrade_remove_unused_deps)
+  * [apt_unattended_upgrade_remove_unused_kernel](#apt_unattended_upgrade_remove_unused_kernel)
   * [apt_unattended_upgrade_syslog_enabled](#apt_unattended_upgrade_syslog_enabled)
   * [apt_unattended_upgrade_syslog_facility](#apt_unattended_upgrade_syslog_facility)
-  * [apt_unattended_upgrade_download_limit](#apt_unattended_upgrade_download_limit)
 * [Dependencies](#dependencies)
 * [License](#license)
 * [Author](#author)
@@ -30,12 +30,12 @@ Ansible role to configure apt
 
 ## Default Variables
 
-### apt_enable_universe
+### apt_enable_backports
 
 #### Default value
 
 ```YAML
-apt_enable_universe: true
+apt_enable_backports: true
 ```
 
 ### apt_enable_multiverse
@@ -46,12 +46,12 @@ apt_enable_universe: true
 apt_enable_multiverse: true
 ```
 
-### apt_enable_backports
+### apt_enable_universe
 
 #### Default value
 
 ```YAML
-apt_enable_backports: true
+apt_enable_universe: true
 ```
 
 ### apt_force_update
@@ -93,24 +93,6 @@ apt_unattended_upgrade_allowed_origins:
   - ${distro_id}ESM:${distro_codename}
 ```
 
-### apt_unattended_upgrade_package_blacklist
-
-List of packages to not update (regexp are supported).
-
-#### Default value
-
-```YAML
-apt_unattended_upgrade_package_blacklist: []
-```
-
-#### Example usage
-
-```YAML
-apt_unattended_upgrade_package_blacklist:
-  - vim
-  - nginx
-```
-
 ### apt_unattended_upgrade_dev_release
 
 This option will controls whether the development release of Ubuntu will be upgraded automatically.
@@ -119,6 +101,32 @@ This option will controls whether the development release of Ubuntu will be upgr
 
 ```YAML
 apt_unattended_upgrade_dev_release: false
+```
+
+### apt_unattended_upgrade_download_limit
+
+Use apt bandwidth limit feature. The example limits the download speed to 70kb/sec.
+
+#### Default value
+
+```YAML
+apt_unattended_upgrade_download_limit: _unset_
+```
+
+#### Example usage
+
+```YAML
+apt_unattended_upgrade_download_limit: '70'
+```
+
+### apt_unattended_upgrade_mail_on_error_only
+
+Set this value to "true" to get emails only on errors.
+
+#### Default value
+
+```YAML
+apt_unattended_upgrade_mail_on_error_only: true
 ```
 
 ### apt_unattended_upgrade_mail_to
@@ -137,24 +145,22 @@ apt_unattended_upgrade_mail_to: root
 apt_unattended_upgrade_mail_to: user@example.com
 ```
 
-### apt_unattended_upgrade_mail_on_error_only
+### apt_unattended_upgrade_package_blacklist
 
-Set this value to "true" to get emails only on errors.
+List of packages to not update (regexp are supported).
 
 #### Default value
 
 ```YAML
-apt_unattended_upgrade_mail_on_error_only: false
+apt_unattended_upgrade_package_blacklist: []
 ```
 
-### apt_unattended_upgrade_remove_unused_kernel
-
-Remove unused automatically installed kernel-related packages (kernel images, kernel headers and kernel version locked tools).
-
-#### Default value
+#### Example usage
 
 ```YAML
-apt_unattended_upgrade_remove_unused_kernel: false
+apt_unattended_upgrade_package_blacklist:
+  - vim
+  - nginx
 ```
 
 ### apt_unattended_upgrade_remove_unused_deps
@@ -165,6 +171,16 @@ Do automatic removal of new unused dependencies after the upgrade (equivalent to
 
 ```YAML
 apt_unattended_upgrade_remove_unused_deps: true
+```
+
+### apt_unattended_upgrade_remove_unused_kernel
+
+Remove unused automatically installed kernel-related packages (kernel images, kernel headers and kernel version locked tools).
+
+#### Default value
+
+```YAML
+apt_unattended_upgrade_remove_unused_kernel: false
 ```
 
 ### apt_unattended_upgrade_syslog_enabled
@@ -183,22 +199,6 @@ Specify syslog facility.
 
 ```YAML
 apt_unattended_upgrade_syslog_facility: daemon
-```
-
-### apt_unattended_upgrade_download_limit
-
-Use apt bandwidth limit feature. The example limits the download speed to 70kb/sec.
-
-#### Default value
-
-```YAML
-apt_unattended_upgrade_download_limit: _unset_
-```
-
-#### Example usage
-
-```YAML
-apt_unattended_upgrade_download_limit: '70'
 ```
 
 ## Dependencies

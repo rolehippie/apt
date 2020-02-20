@@ -50,7 +50,7 @@ apt_unattended_upgrade_mail_to: root
 # @var apt_unattended_upgrade_mail_on_error_only:description: >
 # Set this value to "true" to get emails only on errors.
 # @end
-apt_unattended_upgrade_mail_on_error_only: False
+apt_unattended_upgrade_mail_on_error_only: True
 
 # @var apt_unattended_upgrade_remove_unused_kernel:description: >
 # Remove unused automatically installed kernel-related packages

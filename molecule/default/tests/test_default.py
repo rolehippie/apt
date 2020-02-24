@@ -8,12 +8,10 @@ testinfra_hosts = testinfra.utils.ansible_runner.AnsibleRunner(
 
 
 def test_apt_update(host):
-    update = host.run("apt update")
+    run = host.run("apt update")
+    assert run.rc == 0
 
-    assert update.rc == 0
 
-
-def test_apt_unattended_upgrade(host):
-    uu = host.run("unattended-upgrade --dry-run")
-
-    assert uu.rc == 0
+def test_unattended_upgrade(host):
+    run = host.run("unattended-upgrade --dry-run")
+    assert run.rc == 0

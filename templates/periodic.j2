@@ -1,0 +1,4 @@
+#jinja2: lstrip_blocks: True
+{% for config in apt_periodic_config %}
+APT::Periodic::{{ config.name }} "{{ config.value }}";
+{% endfor %}

@@ -1,16 +1,9 @@
 ---
-logging:
-  level: error
-
 rules:
   exclude_filter:
     - ANSIBLE0007
-    - LINT0008
 
   exclude_files:
-    - terraform/
-    - bin/
     - molecule/
-    - ansible/roles/*/templates/*.j2
 
 ...

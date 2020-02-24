@@ -32,6 +32,8 @@ Ansible role to configure apt
 
 ### apt_enable_backports
 
+Enable backports repositories
+
 #### Default value
 
 ```YAML
@@ -39,6 +41,8 @@ apt_enable_backports: true
 ```
 
 ### apt_enable_multiverse
+
+Enable multiverse repositories
 
 #### Default value
 
@@ -48,6 +52,8 @@ apt_enable_multiverse: true
 
 ### apt_enable_universe
 
+Enable universe repositories
+
 #### Default value
 
 ```YAML
@@ -55,6 +61,8 @@ apt_enable_universe: true
 ```
 
 ### apt_force_update
+
+Force apt cache update
 
 #### Default value
 
@@ -64,7 +72,7 @@ apt_force_update: false
 
 ### apt_periodic_config
 
-Set apt options for daily tasks. If you are looiking for all possible configuration options, have a look at `/usr/lib/apt/apt.systemd.daily`.
+Set apt options for daily tasks
 
 #### Default value
 
@@ -82,7 +90,7 @@ apt_periodic_config:
 
 ### apt_unattended_upgrade_allowed_origins
 
-Automatically upgrade packages from these (origin:archive) pairs.
+Automatically upgrade packages from these pairs
 
 #### Default value
 
@@ -95,7 +103,7 @@ apt_unattended_upgrade_allowed_origins:
 
 ### apt_unattended_upgrade_dev_release
 
-This option will controls whether the development release of Ubuntu will be upgraded automatically.
+Automatically upgrade Ubuntu development releases
 
 #### Default value
 
@@ -105,12 +113,12 @@ apt_unattended_upgrade_dev_release: false
 
 ### apt_unattended_upgrade_download_limit
 
-Use apt bandwidth limit feature. The example limits the download speed to 70kb/sec.
+Use apt bandwidth limit feature, limits the download speed
 
 #### Default value
 
 ```YAML
-apt_unattended_upgrade_download_limit: _unset_
+apt_unattended_upgrade_download_limit:
 ```
 
 #### Example usage
@@ -121,7 +129,7 @@ apt_unattended_upgrade_download_limit: '70'
 
 ### apt_unattended_upgrade_mail_on_error_only
 
-Set this value to "true" to get emails only on errors.
+Send emails only if an unattended upgrade fails
 
 #### Default value
 
@@ -131,7 +139,7 @@ apt_unattended_upgrade_mail_on_error_only: true
 
 ### apt_unattended_upgrade_mail_to
 
-Send email to this address for problems or packages upgrades If empty or unset then no email is sent, make sure that you have a working mail setup on your system. A package that provides `mailx` must be installed.
+Send email to this address for problems or packages upgrades
 
 #### Default value
 
@@ -147,7 +155,7 @@ apt_unattended_upgrade_mail_to: user@example.com
 
 ### apt_unattended_upgrade_package_blacklist
 
-List of packages to not update (regexp are supported).
+List of packages to not update
 
 #### Default value
 
@@ -159,13 +167,13 @@ apt_unattended_upgrade_package_blacklist: []
 
 ```YAML
 apt_unattended_upgrade_package_blacklist:
-  - vim
+  - nvim
   - nginx
 ```
 
 ### apt_unattended_upgrade_remove_unused_deps
 
-Do automatic removal of new unused dependencies after the upgrade (equivalent to apt-get autoremove).
+Do automatic removal of new unused dependencies after the upgrade
 
 #### Default value
 
@@ -175,7 +183,7 @@ apt_unattended_upgrade_remove_unused_deps: true
 
 ### apt_unattended_upgrade_remove_unused_kernel
 
-Remove unused automatically installed kernel-related packages (kernel images, kernel headers and kernel version locked tools).
+Remove unused installed kernel-related packages automatically
 
 #### Default value
 
@@ -193,7 +201,7 @@ apt_unattended_upgrade_syslog_enabled: true
 
 ### apt_unattended_upgrade_syslog_facility
 
-Specify syslog facility.
+Specify syslog facility
 
 #### Default value
 

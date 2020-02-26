@@ -24,6 +24,10 @@
 
 - name: Update apt cache
   when: apt_force_update or apt_sources.changed
+  register: result
+  until: not result.failed | bool
+  retries: 6
+  delay: 10
   apt:
     update_cache: yes
   tags:

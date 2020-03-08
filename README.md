@@ -211,7 +211,7 @@ apt_unattended_upgrade_syslog_facility: daemon
 
 ## Dependencies
 
-None.
+- None
 
 ## License
 
@@ -219,4 +219,4 @@ Apache-2.0
 
 ## Author
 
-Thomas Boerger
+[Thomas Boerger](https://github.com/tboerger)

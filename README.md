@@ -12,6 +12,7 @@ Ansible role to configure apt
   * [apt_enable_universe](#apt_enable_universe)
   * [apt_force_update](#apt_force_update)
   * [apt_periodic_config](#apt_periodic_config)
+  * [apt_redundant_configs](#apt_redundant_configs)
   * [apt_unattended_upgrade_allowed_origins](#apt_unattended_upgrade_allowed_origins)
   * [apt_unattended_upgrade_dev_release](#apt_unattended_upgrade_dev_release)
   * [apt_unattended_upgrade_download_limit](#apt_unattended_upgrade_download_limit)
@@ -86,6 +87,17 @@ apt_periodic_config:
     value: 1
   - name: Unattended-Upgrade
     value: 0
+```
+
+### apt_redundant_configs
+
+List of redundant configs that gets deleted
+
+#### Default value
+
+```YAML
+apt_redundant_configs:
+  - 20auto-upgrades
 ```
 
 ### apt_unattended_upgrade_allowed_origins
@@ -211,7 +223,7 @@ apt_unattended_upgrade_syslog_facility: daemon
 
 ## Dependencies
 
-- None
+* None
 
 ## License
 

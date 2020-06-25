@@ -12,6 +12,10 @@ apt_enable_backports: True
 # @var apt_force_update:description: Force apt cache update
 apt_force_update: False
 
+# @var apt_redundant_configs:description: List of redundant configs that gets deleted
+apt_redundant_configs:
+  - 20auto-upgrades
+
 # @var apt_periodic_config:description: Set apt options for daily tasks
 apt_periodic_config:
   - name: Update-Package-Lists

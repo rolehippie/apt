@@ -22,6 +22,14 @@
   tags:
     - apt
 
+- name: Drop redundant configs
+  loop: "{{ apt_redundant_configs }}"
+  file:
+    path: "/etc/apt/apt.conf.d/{{ item }}"
+    state: absent
+  tags:
+    - apt
+
 - name: Update apt cache
   when: apt_force_update or apt_sources.changed
   register: result

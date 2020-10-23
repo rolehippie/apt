@@ -1,4 +1,4 @@
-# Standards: 0.1
+# Standards: 1.2
 ---
 # @var apt_enable_universe:description: Enable universe repositories
 apt_enable_universe: True

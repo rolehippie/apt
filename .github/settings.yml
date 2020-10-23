@@ -1,7 +1,7 @@
 ---
 repository:
   name: apt
-  description: Ansible role for apt
+  description: Ansible role to configure APT repositories and settings
   topics: ansible, role, ansible-role
 
   private: false

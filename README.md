@@ -17,8 +17,10 @@ Building and improving this Ansible role have been sponsored by my employer **Pr
   * [apt_enable_multiverse](#apt_enable_multiverse)
   * [apt_enable_universe](#apt_enable_universe)
   * [apt_force_update](#apt_force_update)
+  * [apt_general_url](#apt_general_url)
   * [apt_periodic_config](#apt_periodic_config)
   * [apt_redundant_configs](#apt_redundant_configs)
+  * [apt_security_url](#apt_security_url)
   * [apt_unattended_upgrade_allowed_origins](#apt_unattended_upgrade_allowed_origins)
   * [apt_unattended_upgrade_dev_release](#apt_unattended_upgrade_dev_release)
   * [apt_unattended_upgrade_download_limit](#apt_unattended_upgrade_download_limit)
@@ -77,6 +79,18 @@ Force apt cache update
 apt_force_update: false
 ```
 
+### apt_general_url
+
+General URL of repositories changed by architecture
+
+#### Default value
+
+```YAML
+apt_general_url:
+  x86_64: http://archive.ubuntu.com/ubuntu
+  aarch64: http://ports.ubuntu.com/ubuntu-ports
+```
+
 ### apt_periodic_config
 
 Set apt options for daily tasks
@@ -104,6 +118,18 @@ List of redundant configs that gets deleted
 ```YAML
 apt_redundant_configs:
   - 20auto-upgrades
+```
+
+### apt_security_url
+
+Security URL of repositories changed by architecture
+
+#### Default value
+
+```YAML
+apt_security_url:
+  x86_64: http://security.ubuntu.com/ubuntu
+  aarch64: http://ports.ubuntu.com/ubuntu-ports
 ```
 
 ### apt_unattended_upgrade_allowed_origins

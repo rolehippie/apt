@@ -67,4 +67,14 @@ apt_unattended_upgrade_syslog_enabled: True
 # @var apt_unattended_upgrade_syslog_facility:description: Specify syslog facility
 apt_unattended_upgrade_syslog_facility: daemon
 
+# @var apt_general_url:description: General URL of repositories changed by architecture
+apt_general_url:
+  x86_64: http://archive.ubuntu.com/ubuntu
+  aarch64: http://ports.ubuntu.com/ubuntu-ports
+
+# @var apt_security_url:description: Security URL of repositories changed by architecture
+apt_security_url:
+  x86_64: http://security.ubuntu.com/ubuntu
+  aarch64: http://ports.ubuntu.com/ubuntu-ports
+
 ...

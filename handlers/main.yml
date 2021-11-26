@@ -1,0 +1,11 @@
+# Standards: 1.2
+---
+- name: Update apt
+  register: result
+  until: not result.failed | bool
+  retries: 6
+  delay: 10
+  apt:
+    update_cache: True
+
+...

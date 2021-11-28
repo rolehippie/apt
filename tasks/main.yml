@@ -12,6 +12,26 @@
   tags:
     - apt
 
+- name: Update apt cache
+  when: apt_force_update
+  register: result
+  until: not result.failed | bool
+  retries: 6
+  delay: 10
+  apt:
+    update_cache: True
+  tags:
+    - apt
+
+- name: Install required packages
+  loop:
+    - unattended-upgrades
+  package:
+    name: "{{ item }}"
+    state: present
+  tags:
+    - apt
+
 - name: Write periodic config
   template:
     src: periodic.j2
@@ -37,26 +57,6 @@
   file:
     path: "/etc/apt/apt.conf.d/{{ item }}"
     state: absent
-  tags:
-    - apt
-
-- name: Update apt cache
-  when: apt_force_update
-  register: result
-  until: not result.failed | bool
-  retries: 6
-  delay: 10
-  apt:
-    update_cache: True
-  tags:
-    - apt
-
-- name: Install required packages
-  loop:
-    - unattended-upgrades
-  package:
-    name: "{{ item }}"
-    state: present
   tags:
     - apt
 

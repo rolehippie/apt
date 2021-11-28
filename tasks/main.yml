@@ -51,4 +51,13 @@
   tags:
     - apt
 
+- name: Install required packages
+  loop:
+    - unattended-upgrade
+  package:
+    name: "{{ item }}"
+    state: present
+  tags:
+    - apt
+
 ...

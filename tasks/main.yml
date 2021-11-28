@@ -53,7 +53,7 @@
 
 - name: Install required packages
   loop:
-    - unattended-upgrade
+    - unattended-upgrades
   package:
     name: "{{ item }}"
     state: present

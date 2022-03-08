@@ -1,39 +1,40 @@
 # apt
 
-[![Source Code](https://img.shields.io/badge/github-source%20code-blue?logo=github&logoColor=white)](https://github.com/rolehippie/apt) [![Testing Build](https://github.com/rolehippie/apt/workflows/testing/badge.svg)](https://github.com/rolehippie/apt/actions?query=workflow%3Atesting) [![Readme Build](https://github.com/rolehippie/apt/workflows/readme/badge.svg)](https://github.com/rolehippie/apt/actions?query=workflow%3Areadme) [![Galaxy Build](https://github.com/rolehippie/apt/workflows/galaxy/badge.svg)](https://github.com/rolehippie/apt/actions?query=workflow%3Agalaxy) [![License: Apache-2.0](https://img.shields.io/github/license/rolehippie/apt)](https://github.com/rolehippie/apt/blob/master/LICENSE) 
+[![Source Code](https://img.shields.io/badge/github-source%20code-blue?logo=github&logoColor=white)](https://github.com/rolehippie/apt) [![Testing Build](https://github.com/rolehippie/apt/workflows/testing/badge.svg)](https://github.com/rolehippie/apt/actions?query=workflow%3Atesting) [![Readme Build](https://github.com/rolehippie/apt/workflows/readme/badge.svg)](https://github.com/rolehippie/apt/actions?query=workflow%3Areadme) [![Galaxy Build](https://github.com/rolehippie/apt/workflows/galaxy/badge.svg)](https://github.com/rolehippie/apt/actions?query=workflow%3Agalaxy) [![License: Apache-2.0](https://img.shields.io/github/license/rolehippie/apt)](https://github.com/rolehippie/apt/blob/master/LICENSE)
 
-Ansible role to configure APT repositories and settings. 
+Ansible role to configure APT repositories and settings.
 
-## Sponsor 
+## Sponsor
 
-[![Proact Deutschland GmbH](https://proact.eu/wp-content/uploads/2020/03/proact-logo.png)](https://proact.eu) 
+[![Proact Deutschland GmbH](https://proact.eu/wp-content/uploads/2020/03/proact-logo.png)](https://proact.eu)
 
 Building and improving this Ansible role have been sponsored by my employer **Proact Deutschland GmbH**.
 
 ## Table of content
 
-* [Default Variables](#default-variables)
-  * [apt_enable_backports](#apt_enable_backports)
-  * [apt_enable_multiverse](#apt_enable_multiverse)
-  * [apt_enable_universe](#apt_enable_universe)
-  * [apt_force_update](#apt_force_update)
-  * [apt_general_url](#apt_general_url)
-  * [apt_periodic_config](#apt_periodic_config)
-  * [apt_redundant_configs](#apt_redundant_configs)
-  * [apt_security_url](#apt_security_url)
-  * [apt_unattended_upgrade_allowed_origins](#apt_unattended_upgrade_allowed_origins)
-  * [apt_unattended_upgrade_dev_release](#apt_unattended_upgrade_dev_release)
-  * [apt_unattended_upgrade_download_limit](#apt_unattended_upgrade_download_limit)
-  * [apt_unattended_upgrade_mail_on_error_only](#apt_unattended_upgrade_mail_on_error_only)
-  * [apt_unattended_upgrade_mail_to](#apt_unattended_upgrade_mail_to)
-  * [apt_unattended_upgrade_package_blacklist](#apt_unattended_upgrade_package_blacklist)
-  * [apt_unattended_upgrade_remove_unused_deps](#apt_unattended_upgrade_remove_unused_deps)
-  * [apt_unattended_upgrade_remove_unused_kernel](#apt_unattended_upgrade_remove_unused_kernel)
-  * [apt_unattended_upgrade_syslog_enabled](#apt_unattended_upgrade_syslog_enabled)
-  * [apt_unattended_upgrade_syslog_facility](#apt_unattended_upgrade_syslog_facility)
-* [Dependencies](#dependencies)
-* [License](#license)
-* [Author](#author)
+- [Default Variables](#default-variables)
+  - [apt_enable_backports](#apt_enable_backports)
+  - [apt_enable_multiverse](#apt_enable_multiverse)
+  - [apt_enable_universe](#apt_enable_universe)
+  - [apt_force_update](#apt_force_update)
+  - [apt_general_url](#apt_general_url)
+  - [apt_periodic_config](#apt_periodic_config)
+  - [apt_redundant_configs](#apt_redundant_configs)
+  - [apt_security_url](#apt_security_url)
+  - [apt_unattended_upgrade_allowed_origins](#apt_unattended_upgrade_allowed_origins)
+  - [apt_unattended_upgrade_dev_release](#apt_unattended_upgrade_dev_release)
+  - [apt_unattended_upgrade_download_limit](#apt_unattended_upgrade_download_limit)
+  - [apt_unattended_upgrade_mail_on_error_only](#apt_unattended_upgrade_mail_on_error_only)
+  - [apt_unattended_upgrade_mail_to](#apt_unattended_upgrade_mail_to)
+  - [apt_unattended_upgrade_package_blacklist](#apt_unattended_upgrade_package_blacklist)
+  - [apt_unattended_upgrade_remove_unused_deps](#apt_unattended_upgrade_remove_unused_deps)
+  - [apt_unattended_upgrade_remove_unused_kernel](#apt_unattended_upgrade_remove_unused_kernel)
+  - [apt_unattended_upgrade_syslog_enabled](#apt_unattended_upgrade_syslog_enabled)
+  - [apt_unattended_upgrade_syslog_facility](#apt_unattended_upgrade_syslog_facility)
+- [Discovered Tags](#discovered-tags)
+- [Dependencies](#dependencies)
+- [License](#license)
+- [Author](#author)
 
 ---
 
@@ -253,9 +254,14 @@ Specify syslog facility
 apt_unattended_upgrade_syslog_facility: daemon
 ```
 
+## Discovered Tags
+
+**_apt_**
+
+
 ## Dependencies
 
-* None
+- None
 
 ## License
 

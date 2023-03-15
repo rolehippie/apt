@@ -1,6 +1,11 @@
 # apt
 
-[![Source Code](https://img.shields.io/badge/github-source%20code-blue?logo=github&logoColor=white)](https://github.com/rolehippie/apt) [![General Workflow](https://github.com/rolehippie/apt/actions/workflows/general.yml/badge.svg)](https://github.com/rolehippie/apt/actions/workflows/general.yml) [![Readme Workflow](https://github.com/rolehippie/apt/actions/workflows/readme.yml/badge.svg)](https://github.com/rolehippie/apt/actions/workflows/readme.yml) [![Galaxy Workflow](https://github.com/rolehippie/apt/actions/workflows/galaxy.yml/badge.svg)](https://github.com/rolehippie/apt/actions/workflows/galaxy.yml) [![License: Apache-2.0](https://img.shields.io/github/license/rolehippie/apt)](https://github.com/rolehippie/apt/blob/master/LICENSE) [![Ansible Role](https://img.shields.io/ansible/role/51414)](https://galaxy.ansible.com/rolehippie/apt)
+[![Source Code](https://img.shields.io/badge/github-source%20code-blue?logo=github&amp;logoColor=white)](https://github.com/rolehippie/apt)
+[![General Workflow](https://github.com/rolehippie/apt/actions/workflows/general.yml/badge.svg)](https://github.com/rolehippie/apt/actions/workflows/general.yml)
+[![Readme Workflow](https://github.com/rolehippie/apt/actions/workflows/readme.yml/badge.svg)](https://github.com/rolehippie/apt/actions/workflows/readme.yml)
+[![Galaxy Workflow](https://github.com/rolehippie/apt/actions/workflows/galaxy.yml/badge.svg)](https://github.com/rolehippie/apt/actions/workflows/galaxy.yml)
+[![License: Apache-2.0](https://img.shields.io/github/license/rolehippie/apt)](https://github.com/rolehippie/apt/blob/master/LICENSE)
+[![Ansible Role](https://img.shields.io/ansible/role/51414)](https://galaxy.ansible.com/rolehippie/apt)
 
 Ansible role to configure APT repositories and settings.
 
@@ -12,6 +17,7 @@ Building and improving this Ansible role have been sponsored by my current and p
 
 - [Default Variables](#default-variables)
   - [apt_enable_backports](#apt_enable_backports)
+  - [apt_enable_general](#apt_enable_general)
   - [apt_enable_multiverse](#apt_enable_multiverse)
   - [apt_enable_universe](#apt_enable_universe)
   - [apt_force_update](#apt_force_update)
@@ -46,6 +52,16 @@ Enable backports repositories
 
 ```YAML
 apt_enable_backports: true
+```
+
+### apt_enable_general
+
+Enable general repositories
+
+#### Default value
+
+```YAML
+apt_enable_general: true
 ```
 
 ### apt_enable_multiverse

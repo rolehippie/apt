@@ -1,3 +1,4 @@
+{% if apt_enable_general | default(True) %}
 deb {{ apt_general_url[ansible_architecture] }} {{ ansible_distribution_release }} main restricted
 deb-src {{ apt_general_url[ansible_architecture] }} {{ ansible_distribution_release }} main restricted
 
@@ -10,6 +11,7 @@ deb {{ apt_security_url[ansible_architecture] }} {{ ansible_distribution_release
 deb-src {{ apt_security_url[ansible_architecture] }} {{ ansible_distribution_release }}-security universe
 deb {{ apt_security_url[ansible_architecture] }} {{ ansible_distribution_release }}-security multiverse
 deb-src {{ apt_security_url[ansible_architecture] }} {{ ansible_distribution_release }}-security multiverse
+{% endif %}
 {% if apt_enable_universe | default(True) %}
 
 deb {{ apt_general_url[ansible_architecture] }} {{ ansible_distribution_release }} universe

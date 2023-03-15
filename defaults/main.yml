@@ -1,5 +1,8 @@
 # Standards: 1.2
 ---
+# @var apt_enable_general:description: Enable general repositories
+apt_enable_general: True
+
 # @var apt_enable_universe:description: Enable universe repositories
 apt_enable_universe: True
 

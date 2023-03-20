@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.0](https://github.com/rolehippie/apt/compare/v1.0.0...v1.1.0) (2023-03-20)
+
+
+### Features
+
+* add an options to disable general repos ([f98a8b7](https://github.com/rolehippie/apt/commit/f98a8b78237f51d936a32367686e00b03b91522b))
+
 ## 1.0.0 (2023-01-04)
 
 

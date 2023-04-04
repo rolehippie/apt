@@ -23,8 +23,10 @@ Building and improving this Ansible role have been sponsored by my current and p
   - [apt_force_update](#apt_force_update)
   - [apt_general_url](#apt_general_url)
   - [apt_periodic_config](#apt_periodic_config)
+  - [apt_periodic_config_enabled](#apt_periodic_config_enabled)
   - [apt_redundant_configs](#apt_redundant_configs)
   - [apt_security_url](#apt_security_url)
+  - [apt_unattended_config_enabled](#apt_unattended_config_enabled)
   - [apt_unattended_upgrade_allowed_origins](#apt_unattended_upgrade_allowed_origins)
   - [apt_unattended_upgrade_dev_release](#apt_unattended_upgrade_dev_release)
   - [apt_unattended_upgrade_download_limit](#apt_unattended_upgrade_download_limit)
@@ -124,6 +126,16 @@ apt_periodic_config:
     value: 0
 ```
 
+### apt_periodic_config_enabled
+
+Enable writing periodic config
+
+#### Default value
+
+```YAML
+apt_periodic_config_enabled: true
+```
+
 ### apt_redundant_configs
 
 List of redundant configs that gets deleted
@@ -145,6 +157,16 @@ Security URL of repositories changed by architecture
 apt_security_url:
   x86_64: http://security.ubuntu.com/ubuntu
   aarch64: http://ports.ubuntu.com/ubuntu-ports
+```
+
+### apt_unattended_config_enabled
+
+Enable writing unattended config
+
+#### Default value
+
+```YAML
+apt_unattended_config_enabled: true
 ```
 
 ### apt_unattended_upgrade_allowed_origins

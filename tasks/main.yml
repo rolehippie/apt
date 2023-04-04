@@ -33,6 +33,7 @@
     - apt
 
 - name: Write periodic config
+  when: apt_periodic_config_enabled
   template:
     src: periodic.j2
     dest: /etc/apt/apt.conf.d/10periodic
@@ -43,6 +44,7 @@
     - apt
 
 - name: Write unattended-upgrades config
+  when: apt_unattended_config_enabled
   template:
     src: unattended-upgrades.j2
     dest: /etc/apt/apt.conf.d/50unattended-upgrades

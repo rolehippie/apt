@@ -19,6 +19,9 @@ apt_force_update: False
 apt_redundant_configs:
   - 20auto-upgrades
 
+# @var apt_periodic_config_enabled:description: Enable writing periodic config
+apt_periodic_config_enabled: True
+
 # @var apt_periodic_config:description: Set apt options for daily tasks
 apt_periodic_config:
   - name: Update-Package-Lists
@@ -29,6 +32,9 @@ apt_periodic_config:
     value: 1
   - name: Unattended-Upgrade
     value: 0
+
+# @var apt_unattended_config_enabled:description: Enable writing unattended config
+apt_unattended_config_enabled: True
 
 # @var apt_unattended_upgrade_allowed_origins:description: Automatically upgrade packages from these pairs
 apt_unattended_upgrade_allowed_origins:

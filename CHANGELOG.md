@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.2.0](https://github.com/rolehippie/apt/compare/v1.1.0...v1.2.0) (2023-04-08)
+
+
+### Features
+
+* add options to disable periodic and unattended configs ([69ba362](https://github.com/rolehippie/apt/commit/69ba36239b403b0a66a661fdb6778502030c9720))
+
 ## [1.1.0](https://github.com/rolehippie/apt/compare/v1.0.0...v1.1.0) (2023-03-20)
 
 

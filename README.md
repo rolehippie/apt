@@ -5,7 +5,7 @@
 [![Readme Workflow](https://github.com/rolehippie/apt/actions/workflows/readme.yml/badge.svg)](https://github.com/rolehippie/apt/actions/workflows/readme.yml)
 [![Galaxy Workflow](https://github.com/rolehippie/apt/actions/workflows/galaxy.yml/badge.svg)](https://github.com/rolehippie/apt/actions/workflows/galaxy.yml)
 [![License: Apache-2.0](https://img.shields.io/github/license/rolehippie/apt)](https://github.com/rolehippie/apt/blob/master/LICENSE)
-[![Ansible Role](https://img.shields.io/ansible/role/51414)](https://galaxy.ansible.com/rolehippie/apt)
+[![Ansible Role](https://img.shields.io/badge/role-rolehippie.apt-blue)](https://galaxy.ansible.com/rolehippie/apt)
 
 Ansible role to configure APT repositories and settings.
 
@@ -15,7 +15,6 @@ Building and improving this Ansible role have been sponsored by my current and p
 
 ## Table of content
 
-- [Requirements](#requirements)
 - [Default Variables](#default-variables)
   - [apt_enable_backports](#apt_enable_backports)
   - [apt_enable_general](#apt_enable_general)
@@ -44,11 +43,6 @@ Building and improving this Ansible role have been sponsored by my current and p
 - [Author](#author)
 
 ---
-
-## Requirements
-
-- Minimum Ansible version: `2.10`
-
 
 ## Default Variables
 

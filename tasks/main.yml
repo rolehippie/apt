@@ -2,7 +2,7 @@
 - name: Write sources list
   notify:
     - Update apt
-  template:
+  ansible.builtin.template:
     src: sources.j2
     dest: /etc/apt/sources.list
     owner: root
@@ -17,7 +17,7 @@
   until: not result.failed | bool
   retries: 6
   delay: 10
-  apt:
+  ansible.builtin.apt:
     update_cache: True
   tags:
     - apt
@@ -25,7 +25,7 @@
 - name: Install required packages
   loop:
     - unattended-upgrades
-  package:
+  ansible.builtin.package:
     name: "{{ item }}"
     state: present
   tags:
@@ -33,7 +33,7 @@
 
 - name: Write periodic config
   when: apt_periodic_config_enabled
-  template:
+  ansible.builtin.template:
     src: periodic.j2
     dest: /etc/apt/apt.conf.d/10periodic
     owner: root
@@ -44,7 +44,7 @@
 
 - name: Write unattended-upgrades config
   when: apt_unattended_config_enabled
-  template:
+  ansible.builtin.template:
     src: unattended-upgrades.j2
     dest: /etc/apt/apt.conf.d/50unattended-upgrades
     owner: root
@@ -55,7 +55,7 @@
 
 - name: Drop redundant configs
   loop: "{{ apt_redundant_configs }}"
-  file:
+  ansible.builtin.file:
     path: "/etc/apt/apt.conf.d/{{ item }}"
     state: absent
   tags:

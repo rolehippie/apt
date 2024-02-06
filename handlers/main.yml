@@ -4,7 +4,7 @@
   until: not result.failed | bool
   retries: 6
   delay: 10
-  apt:
+  ansible.builtin.apt:
     update_cache: True
 
 ...

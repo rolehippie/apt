@@ -1,4 +1,4 @@
-{% if apt_enable_general | default(True) %}
+{% if apt_enable_general | default(true) %}
 deb {{ apt_general_url[ansible_architecture] }} {{ ansible_distribution_release }} main restricted
 deb-src {{ apt_general_url[ansible_architecture] }} {{ ansible_distribution_release }} main restricted
 
@@ -12,21 +12,21 @@ deb-src {{ apt_security_url[ansible_architecture] }} {{ ansible_distribution_rel
 deb {{ apt_security_url[ansible_architecture] }} {{ ansible_distribution_release }}-security multiverse
 deb-src {{ apt_security_url[ansible_architecture] }} {{ ansible_distribution_release }}-security multiverse
 {% endif %}
-{% if apt_enable_universe | default(True) %}
+{% if apt_enable_universe | default(true) %}
 
 deb {{ apt_general_url[ansible_architecture] }} {{ ansible_distribution_release }} universe
 deb-src {{ apt_general_url[ansible_architecture] }} {{ ansible_distribution_release }} universe
 deb {{ apt_general_url[ansible_architecture] }} {{ ansible_distribution_release }}-updates universe
 deb-src {{ apt_general_url[ansible_architecture] }} {{ ansible_distribution_release }}-updates universe
 {% endif %}
-{% if apt_enable_multiverse | default(True) %}
+{% if apt_enable_multiverse | default(true) %}
 
 deb {{ apt_general_url[ansible_architecture] }} {{ ansible_distribution_release }} multiverse
 deb-src {{ apt_general_url[ansible_architecture] }} {{ ansible_distribution_release }} multiverse
 deb {{ apt_general_url[ansible_architecture] }} {{ ansible_distribution_release }}-updates multiverse
 deb-src {{ apt_general_url[ansible_architecture] }} {{ ansible_distribution_release }}-updates multiverse
 {% endif %}
-{% if apt_enable_backports | default(True) %}
+{% if apt_enable_backports | default(true) %}
 
 deb {{ apt_general_url[ansible_architecture] }} {{ ansible_distribution_release }}-backports main restricted universe multiverse
 deb-src {{ apt_general_url[ansible_architecture] }} {{ ansible_distribution_release }}-backports main restricted universe multiverse

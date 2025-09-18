@@ -12,13 +12,14 @@
     - apt
 
 - name: Update apt cache
-  when: apt_force_update
+  when:
+    - apt_force_update
   register: result
   until: not result.failed | bool
   retries: 6
   delay: 10
   ansible.builtin.apt:
-    update_cache: True
+    update_cache: true
   tags:
     - apt
 
@@ -32,7 +33,8 @@
     - apt
 
 - name: Write periodic config
-  when: apt_periodic_config_enabled
+  when:
+    - apt_periodic_config_enabled
   ansible.builtin.template:
     src: periodic.j2
     dest: /etc/apt/apt.conf.d/10periodic
@@ -43,7 +45,8 @@
     - apt
 
 - name: Write unattended-upgrades config
-  when: apt_unattended_config_enabled
+  when:
+    - apt_unattended_config_enabled
   ansible.builtin.template:
     src: unattended-upgrades.j2
     dest: /etc/apt/apt.conf.d/50unattended-upgrades

@@ -1,25 +1,25 @@
 ---
 # @var apt_enable_general:description: Enable general repositories
-apt_enable_general: True
+apt_enable_general: true
 
 # @var apt_enable_universe:description: Enable universe repositories
-apt_enable_universe: True
+apt_enable_universe: true
 
 # @var apt_enable_multiverse:description: Enable multiverse repositories
-apt_enable_multiverse: True
+apt_enable_multiverse: true
 
 # @var apt_enable_backports:description: Enable backports repositories
-apt_enable_backports: True
+apt_enable_backports: true
 
 # @var apt_force_update:description: Force apt cache update
-apt_force_update: False
+apt_force_update: false
 
 # @var apt_redundant_configs:description: List of redundant configs that gets deleted
 apt_redundant_configs:
   - 20auto-upgrades
 
 # @var apt_periodic_config_enabled:description: Enable writing periodic config
-apt_periodic_config_enabled: True
+apt_periodic_config_enabled: true
 
 # @var apt_periodic_config:description: Set apt options for daily tasks
 apt_periodic_config:
@@ -33,7 +33,7 @@ apt_periodic_config:
     value: 0
 
 # @var apt_unattended_config_enabled:description: Enable writing unattended config
-apt_unattended_config_enabled: True
+apt_unattended_config_enabled: true
 
 # @var apt_unattended_upgrade_allowed_origins:description: Automatically upgrade packages from these pairs
 apt_unattended_upgrade_allowed_origins:
@@ -50,27 +50,27 @@ apt_unattended_upgrade_allowed_origins:
 apt_unattended_upgrade_package_blacklist: []
 
 # @var apt_unattended_upgrade_dev_release:description: Automatically upgrade Ubuntu development releases
-apt_unattended_upgrade_dev_release: False
+apt_unattended_upgrade_dev_release: false
 
 # @var apt_unattended_upgrade_mail_to:description: Send email to this address for problems or packages upgrades
 # @var apt_unattended_upgrade_mail_to:example: $ "user@example.com"
 apt_unattended_upgrade_mail_to: root
 
 # @var apt_unattended_upgrade_mail_on_error_only:description: Send emails only if an unattended upgrade fails
-apt_unattended_upgrade_mail_on_error_only: True
+apt_unattended_upgrade_mail_on_error_only: true
 
 # @var apt_unattended_upgrade_remove_unused_kernel:description: Remove unused installed kernel-related packages automatically
-apt_unattended_upgrade_remove_unused_kernel: False
+apt_unattended_upgrade_remove_unused_kernel: false
 
 # @var apt_unattended_upgrade_remove_unused_deps:description: Do automatic removal of new unused dependencies after the upgrade
-apt_unattended_upgrade_remove_unused_deps: True
+apt_unattended_upgrade_remove_unused_deps: true
 
 # @var apt_unattended_upgrade_download_limit: description: Use apt bandwidth limit feature, limits the download speed
 # @var apt_unattended_upgrade_download_limit:example: $ "70"
 apt_unattended_upgrade_download_limit:
 
 # @apt_unattended_upgrade_syslog_enabled:description: Enable logging to syslog
-apt_unattended_upgrade_syslog_enabled: True
+apt_unattended_upgrade_syslog_enabled: true
 
 # @var apt_unattended_upgrade_syslog_facility:description: Specify syslog facility
 apt_unattended_upgrade_syslog_facility: daemon

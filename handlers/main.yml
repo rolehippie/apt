@@ -5,6 +5,6 @@
   retries: 6
   delay: 10
   ansible.builtin.apt:
-    update_cache: True
+    update_cache: true
 
 ...

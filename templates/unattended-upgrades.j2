@@ -1,4 +1,3 @@
-#jinja2: lstrip_blocks: True
 Unattended-Upgrade::Allowed-Origins {
 {% for item in apt_unattended_upgrade_allowed_origins | default([]) %}
     "{{ item }}";
@@ -11,14 +10,14 @@ Unattended-Upgrade::Package-Blacklist {
 {% endfor %}
 };
 
-Unattended-Upgrade::DevRelease "{{ apt_unattended_upgrade_dev_release | lower }}";
+Unattended-Upgrade::DevRelease "{{ apt_unattended_upgrade_dev_release | string }}";
 Unattended-Upgrade::Mail "{{ apt_unattended_upgrade_mail_to }}";
-Unattended-Upgrade::MailOnlyOnError "{{ apt_unattended_upgrade_mail_on_error_only | lower }}";
-Unattended-Upgrade::Remove-Unused-Kernel-Packages "{{ apt_unattended_upgrade_remove_unused_kernel | lower }}";
-Unattended-Upgrade::Remove-Unused-Dependencies "{{ apt_unattended_upgrade_remove_unused_deps | lower }}";
+Unattended-Upgrade::MailOnlyOnError "{{ apt_unattended_upgrade_mail_on_error_only | string }}";
+Unattended-Upgrade::Remove-Unused-Kernel-Packages "{{ apt_unattended_upgrade_remove_unused_kernel | string }}";
+Unattended-Upgrade::Remove-Unused-Dependencies "{{ apt_unattended_upgrade_remove_unused_deps | string }}";
 Unattended-Upgrade::Automatic-Reboot "false";
-{% if apt_unattended_upgrade_download_limit | default(False) %}
+{% if apt_unattended_upgrade_download_limit is not none and (apt_unattended_upgrade_download_limit | length > 0) %}
 Acquire::http::Dl-Limit "{{ apt_unattended_upgrade_download_limit }}";
 {% endif %}
-Unattended-Upgrade::SyslogEnable "{{ apt_unattended_upgrade_syslog_enabled | lower }}";
+Unattended-Upgrade::SyslogEnable "{{ apt_unattended_upgrade_syslog_enabled | string }}";
 Unattended-Upgrade::SyslogFacility "{{ apt_unattended_upgrade_syslog_facility }}";

@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.2.0](https://github.com/rolehippie/apt/compare/v2.1.0...v2.2.0) (2025-09-21)
+
+
+### Features
+
+* integrate new repo format for 24.04 ([4d63c09](https://github.com/rolehippie/apt/commit/4d63c091382fa34f27d726259bd649a3d64a842a))
+
 ## [2.1.0](https://github.com/rolehippie/apt/compare/v2.0.0...v2.1.0) (2025-09-18)
 
 

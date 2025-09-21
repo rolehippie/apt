@@ -1,13 +1,15 @@
 ---
-- name: Write sources list
-  notify:
-    - Update apt
-  ansible.builtin.template:
-    src: sources.j2
-    dest: /etc/apt/sources.list
-    owner: root
-    group: root
-    mode: u=rw,g=r,o=r
+- name: Include legacy tasks
+  when:
+    - ansible_distribution_version is version('24.04', '<')
+  ansible.builtin.include_tasks: legacy.yml
+  tags:
+    - apt
+
+- name: Include recent tasks
+  when:
+    - ansible_distribution_version is version('24.04', '>=')
+  ansible.builtin.include_tasks: recent.yml
   tags:
     - apt
 

@@ -1,0 +1,39 @@
+---
+- name: Write sources list
+  notify:
+    - Update apt
+  ansible.builtin.copy:
+    content: ""
+    dest: /etc/apt/sources.list
+    owner: root
+    group: root
+    mode: u=rw,g=r,o=r
+  tags:
+    - apt
+
+- name: Write ubuntu sources
+  notify:
+    - Update apt
+  ansible.builtin.copy:
+    content: |
+      # General
+      Types: deb
+      URIs: {{ apt_general_url[ansible_architecture] }}
+      Suites: {{ ansible_distribution_release }} {{ ansible_distribution_release }}-updates{{ (' %s-backports' % ansible_distribution_release) if apt_enable_backports else '' }}
+      Components: main restricted{{ ' universe' if apt_enable_universe else '' }}{{ ' multiverse' if apt_enable_multiverse else '' }}
+      Signed-By: /usr/share/keyrings/ubuntu-archive-keyring.gpg
+
+      # Security
+      Types: deb
+      URIs: {{ apt_security_url[ansible_architecture] }}
+      Suites: {{ ansible_distribution_release }}-security
+      Components: main restricted{{ ' universe' if apt_enable_universe else '' }}{{ ' multiverse' if apt_enable_multiverse else '' }}
+      Signed-By: /usr/share/keyrings/ubuntu-archive-keyring.gpg
+    dest: /etc/apt/sources.list.d/ubuntu.sources
+    owner: root
+    group: root
+    mode: u=rw,g=r,o=r
+  tags:
+    - apt
+
+...

@@ -1,0 +1,14 @@
+---
+- name: Write sources list
+  notify:
+    - Update apt
+  ansible.builtin.template:
+    src: sources.j2
+    dest: /etc/apt/sources.list
+    owner: root
+    group: root
+    mode: u=rw,g=r,o=r
+  tags:
+    - apt
+
+...

@@ -1,5 +1,11 @@
 # Changelog
 
+## [2.6.0](https://github.com/rolehippie/apt/compare/v2.5.0...v2.6.0) (2026-08-24)
+
+### Dependencies
+
+* **minor:** update dependency pipx:molecule to v26.8.0 ([#62](https://github.com/rolehippie/apt/issues/62)) ([df0019e](https://github.com/rolehippie/apt/commit/df0019e213c6aa51c7b9993c4dde5fe29bab60f6))
+
 ## [2.5.0](https://github.com/rolehippie/apt/compare/v2.4.0...v2.5.0) (2026-08-17)
 
 ### Dependencies
